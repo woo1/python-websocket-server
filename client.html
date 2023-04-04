@@ -18,7 +18,8 @@
       
       ws.onmessage = function(e) {
         // e.data contains received string.
-        output("onmessage: " + e.data);
+        const data = JSON.parse(e.data)
+        output(data.id+": " + data.msg);
       };
       
       ws.onclose = function() {
@@ -36,7 +37,7 @@
       var input = document.getElementById("input");
       // You can send message to the Web Socket using ws.send.
       ws.send(input.value);
-      output("send: " + input.value);
+      //output("send: " + input.value);
       input.value = "";
       input.focus();
     }
